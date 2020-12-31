@@ -1,0 +1,4 @@
+package android.libs
+
+configurations.maybeCreate("default")
+artifacts.add("default", file('LCTrustedSDK.aar'))

@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://mobileServices.web.app.sampath.org" xmlns:impl="http://mobileServices.web.app.sampath.org" xmlns:intf="http://mobileServices.web.app.sampath.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://mobileServices.web.app.sampath.org" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:impl="http://mobileServices.web.app.sampath.org" xmlns:intf="http://mobileServices.web.app.sampath.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <element name="getBalInqAccDetails">
+    <complexType>
+     <sequence>
+      <element name="userId" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ReponseObjData">
+    <sequence>
+     <element maxOccurs="unbounded" name="accountList" nillable="true" type="impl:AcctInfoData"/>
+     <element maxOccurs="unbounded" name="availableFeatures" nillable="true" type="xsd:string"/>
+     <element name="statusCode" nillable="true" type="xsd:string"/>
+     <element name="statusDescription" nillable="true" type="xsd:string"/>
+     <element maxOccurs="unbounded" name="txnDetails" nillable="true" type="impl:TxnDetailData"/>
+     <element name="userName" nillable="true" type="xsd:string"/>
+     <element name="mobileNo" nillable="true" type="xsd:string"/>
+     <element name="nic" nillable="true" type="xsd:string"/>
+     <element name="passport" nillable="true" type="xsd:string"/>
+     <element name="authDeviceCnt" nillable="true" type="xsd:string"/>
+     <element name="isAuthDevice" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="AcctInfoData">
+    <sequence>
+     <element name="acctNo" nillable="true" type="xsd:string"/>
+     <element name="acctStatus" nillable="true" type="xsd:string"/>
+     <element name="acctType" nillable="true" type="xsd:string"/>
+     <element name="effectiveAvailableBalance" type="xsd:double"/>
+     <element name="currency" nillable="true" type="xsd:string"/>
+     <element name="isPrimary" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="TxnDetailData">
+    <sequence>
+     <element name="serialNo" nillable="true" type="xsd:string"/>
+     <element name="dateTime" nillable="true" type="xsd:string"/>
+     <element name="txnDescription" nillable="true" type="xsd:string"/>
+     <element name="txnType" nillable="true" type="xsd:string"/>
+     <element name="currencyCode" nillable="true" type="xsd:string"/>
+     <element name="txnAmount" type="xsd:double"/>
+    </sequence>
+   </complexType>
+   <element name="getBalInqAccDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="getBalInqAccDetailsReturn" nillable="true" type="impl:ReponseObjData"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getUpdateDevice">
+    <complexType>
+     <sequence>
+      <element name="userId" nillable="true" type="xsd:string"/>
+      <element name="deviceID" nillable="true" type="xsd:string"/>
+      <element name="updStatus" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getUpdateDeviceResponse">
+    <complexType>
+     <sequence>
+      <element name="getUpdateDeviceReturn" nillable="true" type="impl:ReponseObjData"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCreditAccountList">
+    <complexType>
+     <sequence>
+      <element name="userId" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="TfrResponseObjData">
+    <sequence>
+     <element maxOccurs="unbounded" name="creditAcctList" nillable="true" type="impl:AcctInfoData"/>
+     <element maxOccurs="unbounded" name="debitAcctList" nillable="true" type="impl:AcctInfoData"/>
+     <element maxOccurs="unbounded" name="regOtherBankAcctList" nillable="true" type="impl:RegAccountData"/>
+     <element maxOccurs="unbounded" name="regOtherBankCardList" nillable="true" type="impl:RegAccountData"/>
+     <element name="txnStatus" nillable="true" type="xsd:string"/>
+     <element name="txnStatusDesc" nillable="true" type="xsd:string"/>
+     <element name="userName" nillable="true" type="xsd:string"/>
+     <element maxOccurs="unbounded" name="errorList" nillable="true" type="impl:ErrorInfo"/>
+     <element name="tranID" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="RegAccountData">
+    <sequence>
+     <element name="accountName" nillable="true" type="xsd:string"/>
+     <element name="accountNo" nillable="true" type="xsd:string"/>
+     <element name="accType" nillable="true" type="xsd:string"/>
+     <element name="bankCode" nillable="true" type="xsd:string"/>
+     <element name="bankName" nillable="true" type="xsd:string"/>
+     <element name="branchCode" nillable="true" type="xsd:string"/>
+     <element name="branchName" nillable="true" type="xsd:string"/>
+     <element name="userId" nillable="true" type="xsd:string"/>
+     <element name="crAccountNo" nillable="true" type="xsd:string"/>
+     <element name="accountNickname" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ErrorInfo">
+    <sequence>
+     <element name="errorDesc" nillable="true" type="xsd:string"/>
+     <element name="errorField" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="getCreditAccountListResponse">
+    <complexType>
+     <sequence>
+      <element name="getCreditAccountListReturn" nillable="true" type="impl:TfrResponseObjData"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="confirmTransfer">
+    <complexType>
+     <sequence>
+      <element name="userId" nillable="true" type="xsd:string"/>
+      <element name="tfrData" nillable="true" type="impl:TransferData"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="TransferData">
+    <sequence>
+     <element name="fromAccount" nillable="true" type="xsd:string"/>
+     <element name="onlineFlg" nillable="true" type="xsd:string"/>
+     <element name="receiverMobNo" nillable="true" type="xsd:string"/>
+     <element name="receiverMobNoRe" nillable="true" type="xsd:string"/>
+     <element name="receiverName" nillable="true" type="xsd:string"/>
+     <element name="receiverNic" nillable="true" type="xsd:string"/>
+     <element name="regBankAccount" nillable="true" type="xsd:string"/>
+     <element name="regBankCard" nillable="true" type="xsd:string"/>
+     <element name="senderMobNo" nillable="true" type="xsd:string"/>
+     <element name="senderMobNoRe" nillable="true" type="xsd:string"/>
+     <element name="tfrRemarks" nillable="true" type="xsd:string"/>
+     <element name="toAccount" nillable="true" type="xsd:string"/>
+     <element name="tpAccount" nillable="true" type="xsd:string"/>
+     <element name="tpAccountRe" nillable="true" type="xsd:string"/>
+     <element name="transferAmount" type="xsd:double"/>
+     <element name="transferMode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="confirmTransferResponse">
+    <complexType>
+     <sequence>
+      <element name="confirmTransferReturn" nillable="true" type="impl:TfrResponseObjData"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="PaymentData">
+    <sequence>
+     <element name="fromAccount" nillable="true" type="xsd:string"/>
+     <element name="onlineFlg" nillable="true" type="xsd:string"/>
+     <element name="toAccount" nillable="true" type="xsd:string"/>
+     <element name="transferAmount" type="xsd:double"/>
+     <element name="userId" nillable="true" type="xsd:string"/>
+     <element name="field1" nillable="true" type="xsd:string"/>
+     <element name="field2" nillable="true" type="xsd:string"/>
+     <element name="field3" nillable="true" type="xsd:string"/>
+     <element name="payeeID" nillable="true" type="xsd:string"/>
+     <element name="field4" nillable="true" type="xsd:string"/>
+     <element name="field5" nillable="true" type="xsd:string"/>
+     <element name="field6" nillable="true" type="xsd:string"/>
+     <element name="field7" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="paymentValidation">
+    <complexType>
+     <sequence>
+      <element name="pymtObj" nillable="true" type="impl:PaymentData"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="PymtObjData">
+    <sequence>
+     <element maxOccurs="unbounded" name="payeeLst" nillable="true" type="impl:PayeeListData"/>
+     <element maxOccurs="unbounded" name="pymtTepl" nillable="true" type="impl:PymtTemplateObj"/>
+     <element name="statusCode" nillable="true" type="xsd:string"/>
+     <element name="statusDescription" nillable="true" type="xsd:string"/>
+     <element maxOccurs="unbounded" name="payeeDetaislLst" nillable="true" type="impl:PayeeFieldData"/>
+     <element maxOccurs="unbounded" name="errorList" nillable="true" type="impl:ErrorInfo"/>
+     <element name="paymentID" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PayeeListData">
+    <sequence>
+     <element name="payeeAdd" nillable="true" type="xsd:string"/>
+     <element name="payeeCatId" nillable="true" type="xsd:string"/>
+     <element name="payeeId" nillable="true" type="xsd:string"/>
+     <element name="payeeName" nillable="true" type="xsd:string"/>
+     <element name="payeeAc" nillable="true" type="xsd:string"/>
+     <element maxOccurs="unbounded" name="payeeFileds" nillable="true" type="impl:PayeeFieldData"/>
+    </sequence>
+   </complexType>
+   <complexType name="PayeeFieldData">
+    <sequence>
+     <element name="fieldLength" type="xsd:int"/>
+     <element name="fieldName" nillable="true" type="xsd:string"/>
+     <element name="fieldOptional" nillable="true" type="xsd:string"/>
+     <element name="fieldReEntry" nillable="true" type="xsd:string"/>
+     <element name="fieldScName" nillable="true" type="xsd:string"/>
+     <element name="fieldType" nillable="true" type="xsd:string"/>
+     <element name="fieldDisplySequence" type="xsd:int"/>
+     <element name="lowerlimit" type="xsd:double"/>
+     <element name="upperlimit" type="xsd:double"/>
+     <element name="fieldMinLength" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="PymtTemplateObj">
+    <sequence>
+     <element name="billerName" nillable="true" type="xsd:string"/>
+     <element name="amount" nillable="true" type="xsd:string"/>
+     <element name="drAc" nillable="true" type="xsd:string"/>
+     <element name="billerAc" nillable="true" type="xsd:string"/>
+     <element name="feildOne" nillable="true" type="xsd:string"/>
+     <element name="feildTwo" nillable="true" type="xsd:string"/>
+     <element name="feildThree" nillable="true" type="xsd:string"/>
+     <element name="feildFour" nillable="true" type="xsd:string"/>
+     <element name="billerID" nillable="true" type="xsd:string"/>
+     <element name="custID" nillable="true" type="xsd:string"/>
+     <element name="tmpDate" nillable="true" type="xsd:string"/>
+     <element name="nickName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="paymentValidationResponse">
+    <complexType>
+     <sequence>
+      <element name="paymentValidationReturn" nillable="true" type="impl:PymtObjData"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBillerDetails">
+    <complexType>
+     <sequence>
+      <element name="userId" nillable="true" type="xsd:string"/>
+      <element name="billerID" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBillerDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="getBillerDetailsReturn" nillable="true" type="impl:PymtObjData"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="initiateTransfer">
+    <complexType>
+     <sequence>
+      <element name="userId" nillable="true" type="xsd:string"/>
+      <element name="tfrData" nillable="true" type="impl:TransferData"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="initiateTransferResponse">
+    <complexType>
+     <sequence>
+      <element name="initiateTransferReturn" nillable="true" type="impl:TfrResponseObjData"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="paymentProceed">
+    <complexType>
+     <sequence>
+      <element name="pymtObj" nillable="true" type="impl:PaymentData"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="paymentProceedResponse">
+    <complexType>
+     <sequence>
+      <element name="paymentProceedReturn" nillable="true" type="impl:PymtObjData"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPymTemples">
+    <complexType>
+     <sequence>
+      <element name="userId" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPymTemplesResponse">
+    <complexType>
+     <sequence>
+      <element name="getPymTemplesReturn" nillable="true" type="impl:PymtObjData"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBillerList">
+    <complexType>
+     <sequence/>
+    </complexType>
+   </element>
+   <element name="getBillerListResponse">
+    <complexType>
+     <sequence>
+      <element name="getBillerListReturn" nillable="true" type="impl:PymtObjData"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="doLogin">
+    <complexType>
+     <sequence>
+      <element name="userId" nillable="true" type="xsd:string"/>
+      <element name="password" nillable="true" type="xsd:string"/>
+      <element name="deviceID" nillable="true" type="xsd:string"/>
+      <element name="deviceModel" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="doLoginResponse">
+    <complexType>
+     <sequence>
+      <element name="doLoginReturn" nillable="true" type="impl:ReponseObjData"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getTemplateDetails">
+    <complexType>
+     <sequence>
+      <element name="userId" nillable="true" type="xsd:string"/>
+      <element name="nicName" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getTemplateDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="getTemplateDetailsReturn" nillable="true" type="impl:PymtObjData"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDebitAccountList">
+    <complexType>
+     <sequence>
+      <element name="userId" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDebitAccountListResponse">
+    <complexType>
+     <sequence>
+      <element name="getDebitAccountListReturn" nillable="true" type="impl:TfrResponseObjData"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBalInqMiniTxn">
+    <complexType>
+     <sequence>
+      <element name="userId" nillable="true" type="xsd:string"/>
+      <element name="accountNo" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBalInqMiniTxnResponse">
+    <complexType>
+     <sequence>
+      <element name="getBalInqMiniTxnReturn" nillable="true" type="impl:ReponseObjData"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  </wsdl:types>
+  <wsdl:message name="getPymTemplesResponse">
+    <wsdl:part element="impl:getPymTemplesResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="initiateTransferResponse">
+    <wsdl:part element="impl:initiateTransferResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getDebitAccountListRequest">
+    <wsdl:part element="impl:getDebitAccountList" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="paymentProceedRequest">
+    <wsdl:part element="impl:paymentProceed" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="doLoginResponse">
+    <wsdl:part element="impl:doLoginResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getDebitAccountListResponse">
+    <wsdl:part element="impl:getDebitAccountListResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getBalInqMiniTxnResponse">
+    <wsdl:part element="impl:getBalInqMiniTxnResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getCreditAccountListRequest">
+    <wsdl:part element="impl:getCreditAccountList" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getCreditAccountListResponse">
+    <wsdl:part element="impl:getCreditAccountListResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getTemplateDetailsRequest">
+    <wsdl:part element="impl:getTemplateDetails" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="confirmTransferResponse">
+    <wsdl:part element="impl:confirmTransferResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getBalInqAccDetailsRequest">
+    <wsdl:part element="impl:getBalInqAccDetails" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getBillerDetailsRequest">
+    <wsdl:part element="impl:getBillerDetails" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="doLoginRequest">
+    <wsdl:part element="impl:doLogin" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getUpdateDeviceResponse">
+    <wsdl:part element="impl:getUpdateDeviceResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="confirmTransferRequest">
+    <wsdl:part element="impl:confirmTransfer" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getTemplateDetailsResponse">
+    <wsdl:part element="impl:getTemplateDetailsResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getBillerListResponse">
+    <wsdl:part element="impl:getBillerListResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getPymTemplesRequest">
+    <wsdl:part element="impl:getPymTemples" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getUpdateDeviceRequest">
+    <wsdl:part element="impl:getUpdateDevice" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="paymentValidationRequest">
+    <wsdl:part element="impl:paymentValidation" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getBalInqAccDetailsResponse">
+    <wsdl:part element="impl:getBalInqAccDetailsResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getBillerListRequest">
+    <wsdl:part element="impl:getBillerList" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getBalInqMiniTxnRequest">
+    <wsdl:part element="impl:getBalInqMiniTxn" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="paymentValidationResponse">
+    <wsdl:part element="impl:paymentValidationResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getBillerDetailsResponse">
+    <wsdl:part element="impl:getBillerDetailsResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="paymentProceedResponse">
+    <wsdl:part element="impl:paymentProceedResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="initiateTransferRequest">
+    <wsdl:part element="impl:initiateTransfer" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="MobileServicesMain">
+    <wsdl:operation name="getBalInqAccDetails">
+      <wsdl:input message="impl:getBalInqAccDetailsRequest" name="getBalInqAccDetailsRequest"/>
+      <wsdl:output message="impl:getBalInqAccDetailsResponse" name="getBalInqAccDetailsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getUpdateDevice">
+      <wsdl:input message="impl:getUpdateDeviceRequest" name="getUpdateDeviceRequest"/>
+      <wsdl:output message="impl:getUpdateDeviceResponse" name="getUpdateDeviceResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getCreditAccountList">
+      <wsdl:input message="impl:getCreditAccountListRequest" name="getCreditAccountListRequest"/>
+      <wsdl:output message="impl:getCreditAccountListResponse" name="getCreditAccountListResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="confirmTransfer">
+      <wsdl:input message="impl:confirmTransferRequest" name="confirmTransferRequest"/>
+      <wsdl:output message="impl:confirmTransferResponse" name="confirmTransferResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="paymentValidation">
+      <wsdl:input message="impl:paymentValidationRequest" name="paymentValidationRequest"/>
+      <wsdl:output message="impl:paymentValidationResponse" name="paymentValidationResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getBillerDetails">
+      <wsdl:input message="impl:getBillerDetailsRequest" name="getBillerDetailsRequest"/>
+      <wsdl:output message="impl:getBillerDetailsResponse" name="getBillerDetailsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="initiateTransfer">
+      <wsdl:input message="impl:initiateTransferRequest" name="initiateTransferRequest"/>
+      <wsdl:output message="impl:initiateTransferResponse" name="initiateTransferResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="paymentProceed">
+      <wsdl:input message="impl:paymentProceedRequest" name="paymentProceedRequest"/>
+      <wsdl:output message="impl:paymentProceedResponse" name="paymentProceedResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getPymTemples">
+      <wsdl:input message="impl:getPymTemplesRequest" name="getPymTemplesRequest"/>
+      <wsdl:output message="impl:getPymTemplesResponse" name="getPymTemplesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getBillerList">
+      <wsdl:input message="impl:getBillerListRequest" name="getBillerListRequest"/>
+      <wsdl:output message="impl:getBillerListResponse" name="getBillerListResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="doLogin">
+      <wsdl:input message="impl:doLoginRequest" name="doLoginRequest"/>
+      <wsdl:output message="impl:doLoginResponse" name="doLoginResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getTemplateDetails">
+      <wsdl:input message="impl:getTemplateDetailsRequest" name="getTemplateDetailsRequest"/>
+      <wsdl:output message="impl:getTemplateDetailsResponse" name="getTemplateDetailsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getDebitAccountList">
+      <wsdl:input message="impl:getDebitAccountListRequest" name="getDebitAccountListRequest"/>
+      <wsdl:output message="impl:getDebitAccountListResponse" name="getDebitAccountListResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getBalInqMiniTxn">
+      <wsdl:input message="impl:getBalInqMiniTxnRequest" name="getBalInqMiniTxnRequest"/>
+      <wsdl:output message="impl:getBalInqMiniTxnResponse" name="getBalInqMiniTxnResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MobileServicesMainSoapBinding" type="impl:MobileServicesMain">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getBalInqAccDetails">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getBalInqAccDetailsRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBalInqAccDetailsResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUpdateDevice">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getUpdateDeviceRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUpdateDeviceResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCreditAccountList">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getCreditAccountListRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCreditAccountListResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confirmTransfer">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="confirmTransferRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="confirmTransferResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="paymentValidation">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="paymentValidationRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="paymentValidationResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBillerDetails">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getBillerDetailsRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBillerDetailsResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="initiateTransfer">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="initiateTransferRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="initiateTransferResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="paymentProceed">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="paymentProceedRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="paymentProceedResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPymTemples">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getPymTemplesRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPymTemplesResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBillerList">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getBillerListRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBillerListResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doLogin">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="doLoginRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="doLoginResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTemplateDetails">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getTemplateDetailsRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTemplateDetailsResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDebitAccountList">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getDebitAccountListRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDebitAccountListResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBalInqMiniTxn">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getBalInqMiniTxnRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBalInqMiniTxnResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MobileServicesMainService">
+    <wsdl:port binding="impl:MobileServicesMainSoapBinding" name="MobileServicesMain">
+      <wsdlsoap:address location="http://192.125.125.237:9080/SVRClientWeb/services/MobileServicesMain"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

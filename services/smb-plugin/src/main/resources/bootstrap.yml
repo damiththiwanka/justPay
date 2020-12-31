@@ -1,0 +1,32 @@
+banner:
+  charset: US-ASCII
+default:
+  module_id: WAP
+server:
+  port: 8781
+spring:
+  application:
+    name: smb-plugin
+  cloud:
+    config:
+      uri: ${CONFIG_DEFAULT_ZONE_URL:http://localhost:8761/config}
+      #uri: ${CONFIG_DEFAULT_ZONE_URL:http://192.168.1.200:8761/config}
+  jackson:
+    date-format: com.interblocks.iwallet.smb.configuration.RFC3339DateFormat
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+  profiles:
+    active: ${ACTIVE_PROFILE:dev},internal_enrollment_management,i_card_prod,i_transaction_prod,i_admin_prod,production,qr_proprietary,ipay_prod,i_pin_prod,i_admin_rest_client_util_prod
+  thymeleaf:
+    cache: false
+
+logging:
+  level:
+    root: info
+
+vishwa:
+  url: http://192.125.125.237:9080/SVRClientWeb/services/MobileServicesMain?wsdl
+
+security:
+  jwt:
+    expiration: 3000
